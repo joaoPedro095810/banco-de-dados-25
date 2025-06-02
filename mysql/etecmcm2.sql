@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 05-Maio-2025 às 14:06
--- Versão do servidor: 10.4.32-MariaDB
--- versão do PHP: 8.2.12
+-- Tempo de geração: 21-Maio-2025 às 17:45
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,24 +32,23 @@ USE `etecmcm2`;
 CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL,
   `nome_cat` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `categorias`
 --
 
 INSERT INTO `categorias` (`id_categoria`, `nome_cat`) VALUES
-(1, 'Limpeza'),
-(2, 'Laticínios'),
-(3, 'Frios'),
-(4, 'Enlatados'),
-(5, 'Carnes'),
-(6, 'Hortifrut'),
-(7, 'Perfumaria'),
-(8, 'Bebidas'),
-(9, 'Eletroeletrônicos'),
-(10, 'Congelados'),
-(11, 'Embalagens');
+(1, 'limpeza'),
+(2, 'Frios'),
+(3, 'Enlatados'),
+(4, 'Hortifruti'),
+(5, 'açougue'),
+(7, 'Laticinios'),
+(8, 'Eletronicos'),
+(9, 'Hortfruti'),
+(10, 'Padaria'),
+(11, 'Utensilios');
 
 -- --------------------------------------------------------
 
@@ -63,8 +62,25 @@ CREATE TABLE `produtos` (
   `preco` decimal(10,2) DEFAULT NULL,
   `quant` int(11) DEFAULT NULL,
   `marca` varchar(255) DEFAULT NULL,
-  `id_categoria` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+  `id_categoria` int(11) DEFAULT NULL,
+  `unidade_medida` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Extraindo dados da tabela `produtos`
+--
+
+INSERT INTO `produtos` (`id_produto`, `nome`, `preco`, `quant`, `marca`, `id_categoria`, `unidade_medida`) VALUES
+(1, 'Sabão em Pó', '30.50', 50, 'OMO', 1, 'un'),
+(2, 'Detergente', '3.55', 10, 'Ype', 1, 'un'),
+(3, 'Mortadela_KG', '22.50', 50, 'Sadia', 2, 'kg'),
+(4, 'Mussarela', '33.99', 50, 'Aurora', 2, 'kg'),
+(5, 'Feijão', '6.90', 100, 'Bordom', 3, 'un'),
+(6, 'Sopa', '20.99', 50, 'Campbell', 3, 'un'),
+(7, 'Maçã', '16.99', 100, 'Turma da Monica', 4, 'kg'),
+(8, 'Laranja_saco', '74.99', 20, 'Unifrutas', 4, 'kg'),
+(9, 'Salsicha', '17.99', 70, 'Perdigão', 5, 'kg'),
+(10, 'Linguiça', '26.99', 70, 'Seara', 5, 'kg');
 
 --
 -- Índices para tabelas despejadas
@@ -97,7 +113,7 @@ ALTER TABLE `categorias`
 -- AUTO_INCREMENT de tabela `produtos`
 --
 ALTER TABLE `produtos`
-  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_produto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Restrições para despejos de tabelas
